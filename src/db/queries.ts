@@ -208,7 +208,6 @@ export async function getAnalytics() {
 export async function searchPosts(query: string) {
   // For now, return all posts since we don't have full-text search setup
   // In production, you'd implement proper text search with the query parameter
-  console.log('Searching for:', query);
   
   return await db.select({
     id: posts.id,

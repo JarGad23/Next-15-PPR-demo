@@ -14,7 +14,6 @@ const sql = neon(process.env.DATABASE_URL);
 const db = drizzle(sql);
 
 async function seed() {
-  console.log('🌱 Seeding database...');
 
   try {
     // Create demo user
