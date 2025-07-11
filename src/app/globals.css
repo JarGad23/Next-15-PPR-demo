@@ -139,4 +139,19 @@
     ::-webkit-scrollbar {
         display: none;
     }
+
+    /* Prevent layout shifts during font loading */
+    html {
+        font-display: swap;
+    }
+
+    /* Prevent layout shifts for dynamic content */
+    [data-loading] {
+        min-height: 1rem;
+    }
+
+    /* Reserve space for potential content */
+    .card-content {
+        min-height: 120px;
+    }
 }

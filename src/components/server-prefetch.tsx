@@ -21,7 +21,7 @@ async function PrefetchedPosts() {
             These posts are prefetched on the server and hydrated on the client
           </CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent className="min-h-[300px]">
           <ClientPosts />
         </CardContent>
       </Card>
@@ -42,11 +42,23 @@ export function ServerPrefetchDemo() {
             <CardTitle>Server-Prefetched Posts</CardTitle>
             <CardDescription>Loading prefetched data...</CardDescription>
           </CardHeader>
-          <CardContent>
-            <div className="space-y-2">
-              <div className="h-4 bg-gray-200 rounded animate-pulse"></div>
-              <div className="h-4 bg-gray-200 rounded animate-pulse"></div>
-              <div className="h-4 bg-gray-200 rounded animate-pulse"></div>
+          <CardContent className="min-h-[300px]">
+            <div className="space-y-4">
+              <div className="p-4 border rounded-lg space-y-2">
+                <div className="h-4 bg-gray-200 rounded animate-pulse"></div>
+                <div className="h-3 bg-gray-200 rounded animate-pulse w-3/4"></div>
+                <div className="h-3 bg-gray-200 rounded animate-pulse w-1/2"></div>
+              </div>
+              <div className="p-4 border rounded-lg space-y-2">
+                <div className="h-4 bg-gray-200 rounded animate-pulse"></div>
+                <div className="h-3 bg-gray-200 rounded animate-pulse w-3/4"></div>
+                <div className="h-3 bg-gray-200 rounded animate-pulse w-1/2"></div>
+              </div>
+              <div className="p-4 border rounded-lg space-y-2">
+                <div className="h-4 bg-gray-200 rounded animate-pulse"></div>
+                <div className="h-3 bg-gray-200 rounded animate-pulse w-3/4"></div>
+                <div className="h-3 bg-gray-200 rounded animate-pulse w-1/2"></div>
+              </div>
             </div>
           </CardContent>
         </Card>

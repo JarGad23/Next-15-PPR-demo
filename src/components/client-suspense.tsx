@@ -9,10 +9,20 @@ function UsersList() {
 
   if (isLoading) {
     return (
-      <div className="space-y-2">
-        <div className="h-4 bg-gray-200 rounded animate-pulse"></div>
-        <div className="h-4 bg-gray-200 rounded animate-pulse"></div>
-        <div className="h-4 bg-gray-200 rounded animate-pulse"></div>
+      <div className="space-y-3">
+        {/* Skeleton matches the actual content structure */}
+        <div className="p-3 border rounded-lg space-y-2">
+          <div className="h-4 bg-gray-200 rounded animate-pulse"></div>
+          <div className="h-3 bg-gray-200 rounded animate-pulse w-2/3"></div>
+        </div>
+        <div className="p-3 border rounded-lg space-y-2">
+          <div className="h-4 bg-gray-200 rounded animate-pulse"></div>
+          <div className="h-3 bg-gray-200 rounded animate-pulse w-2/3"></div>
+        </div>
+        <div className="p-3 border rounded-lg space-y-2">
+          <div className="h-4 bg-gray-200 rounded animate-pulse"></div>
+          <div className="h-3 bg-gray-200 rounded animate-pulse w-2/3"></div>
+        </div>
       </div>
     );
   }
@@ -38,9 +48,11 @@ function UserDetail({ userId }: { userId: number }) {
 
   if (isLoading) {
     return (
-      <div className="space-y-2">
+      <div className="p-3 border rounded-lg bg-blue-50 space-y-2">
         <div className="h-4 bg-gray-200 rounded animate-pulse"></div>
-        <div className="h-4 bg-gray-200 rounded animate-pulse"></div>
+        <div className="h-3 bg-gray-200 rounded animate-pulse w-2/3"></div>
+        <div className="h-3 bg-gray-200 rounded animate-pulse w-full mt-2"></div>
+        <div className="h-3 bg-gray-200 rounded animate-pulse w-4/5"></div>
       </div>
     );
   }
@@ -76,12 +88,21 @@ export function ClientSuspenseDemo() {
             <CardTitle>All Users</CardTitle>
             <CardDescription>Client-side query with loading state</CardDescription>
           </CardHeader>
-          <CardContent>
+          <CardContent className="min-h-[240px]">
             <Suspense fallback={
-              <div className="space-y-2">
-                <div className="h-4 bg-gray-200 rounded animate-pulse"></div>
-                <div className="h-4 bg-gray-200 rounded animate-pulse"></div>
-                <div className="h-4 bg-gray-200 rounded animate-pulse"></div>
+              <div className="space-y-3">
+                <div className="p-3 border rounded-lg space-y-2">
+                  <div className="h-4 bg-gray-200 rounded animate-pulse"></div>
+                  <div className="h-3 bg-gray-200 rounded animate-pulse w-2/3"></div>
+                </div>
+                <div className="p-3 border rounded-lg space-y-2">
+                  <div className="h-4 bg-gray-200 rounded animate-pulse"></div>
+                  <div className="h-3 bg-gray-200 rounded animate-pulse w-2/3"></div>
+                </div>
+                <div className="p-3 border rounded-lg space-y-2">
+                  <div className="h-4 bg-gray-200 rounded animate-pulse"></div>
+                  <div className="h-3 bg-gray-200 rounded animate-pulse w-2/3"></div>
+                </div>
               </div>
             }>
               <UsersList />
@@ -94,11 +115,13 @@ export function ClientSuspenseDemo() {
             <CardTitle>User Detail</CardTitle>
             <CardDescription>Dynamic user detail with separate query</CardDescription>
           </CardHeader>
-          <CardContent>
+          <CardContent className="min-h-[160px]">
             <Suspense fallback={
-              <div className="space-y-2">
+              <div className="p-3 border rounded-lg bg-blue-50 space-y-2">
                 <div className="h-4 bg-gray-200 rounded animate-pulse"></div>
-                <div className="h-4 bg-gray-200 rounded animate-pulse"></div>
+                <div className="h-3 bg-gray-200 rounded animate-pulse w-2/3"></div>
+                <div className="h-3 bg-gray-200 rounded animate-pulse w-full mt-2"></div>
+                <div className="h-3 bg-gray-200 rounded animate-pulse w-4/5"></div>
               </div>
             }>
               <UserDetail userId={1} />

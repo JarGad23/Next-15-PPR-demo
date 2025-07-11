@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { trpc } from '@/utils/trpc';
 import { useAuth } from '@/components/auth-provider';
 import { LogOut } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 interface NavigationClientProps {
   isAuthenticated: boolean;
@@ -14,6 +15,11 @@ export function NavigationClient({ isAuthenticated }: NavigationClientProps) {
   const router = useRouter();
   const { clearAuth } = useAuth();
   const utils = trpc.useUtils();
+  const [isHydrated, setIsHydrated] = useState(false);
+
+  useEffect(() => {
+    setIsHydrated(true);
+  }, []);
 
   const handleLogout = async () => {
     try {
@@ -38,7 +44,8 @@ export function NavigationClient({ isAuthenticated }: NavigationClientProps) {
     }
   };
 
-  if (!isAuthenticated) {
+  // Don't render until hydrated to prevent mismatch
+  if (!isHydrated || !isAuthenticated) {
     return null;
   }
 

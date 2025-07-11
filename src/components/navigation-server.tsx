@@ -1,10 +1,7 @@
-import Link from 'next/link';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { LogIn } from 'lucide-react';
-import { NavigationClient } from '@/components/navigation-client';
 import { NavigationLinks } from '@/components/navigation-links';
+import { NavigationAuthSection } from '@/components/navigation-auth-section';
 
 interface User {
   id: number;
@@ -37,42 +34,7 @@ export function NavigationServer({ initialUser }: { initialUser?: User | null })
         <NavigationLinks isAuthenticated={!!user} />
 
         {/* Client-side auth section with hydration */}
-        <div className="mt-6 pt-4 border-t">
-          {user ? (
-            <div className="space-y-3">
-              <div className="flex items-center space-x-2">
-                <div className="w-6 h-6 bg-gradient-to-br from-green-500 to-blue-600 rounded-full flex items-center justify-center">
-                  <span className="text-white font-bold text-xs">
-                    {user.name.split(' ').map(n => n[0]).join('')}
-                  </span>
-                </div>
-                <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-gray-900 truncate">
-                    {user.name}
-                  </p>
-                  <p className="text-xs text-gray-500 truncate">
-                    {user.email}
-                  </p>
-                </div>
-              </div>
-              <NavigationClient isAuthenticated={true} />
-            </div>
-          ) : (
-            <div className="flex flex-col gap-y-2">
-              <Link href="/auth/login" className="cursor-pointer">
-                <Button variant="default" size="sm" className="w-full cursor-pointer">
-                  <LogIn className="w-4 h-4 mr-2" />
-                  Login
-                </Button>
-              </Link>
-              <Link href="/auth/signup" className="cursor-pointer">
-                <Button variant="outline" size="sm" className="w-full cursor-pointer">
-                  Sign Up
-                </Button>
-              </Link>
-            </div>
-          )}
-        </div>
+        <NavigationAuthSection initialUser={user} />
         
         <div className="mt-6 pt-4 border-t">
           <div className="text-xs text-gray-500 space-y-1">

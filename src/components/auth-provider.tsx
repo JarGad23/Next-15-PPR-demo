@@ -51,7 +51,7 @@ export function AuthProvider({
   useEffect(() => {
     setIsClient(true);
     // Small delay to prevent flash during hydration
-    const timer = setTimeout(() => setHasHydrated(true), 100);
+    const timer = setTimeout(() => setHasHydrated(true), 50);
     return () => clearTimeout(timer);
   }, []);
 
@@ -65,12 +65,13 @@ export function AuthProvider({
   };
 
   // Determine the current user - prevent hydration flash
+  // Use initialUser during hydration to prevent flash
   const currentUser: User | null = isLoggedOut ? null : 
     (hasHydrated ? (user || initialUser || null) : (initialUser || null));
   
   const value = {
     user: currentUser,
-    isLoading: isClient && hasHydrated ? (isLoading && !isLoggedOut) : false, // Never loading on server or during hydration
+    isLoading: isClient && hasHydrated ? (isLoading && !isLoggedOut && !initialUser) : false, // Never loading on server or during hydration
     isAuthenticated: !isLoggedOut && !!currentUser,
     refetchUser: handleRefetch,
     clearAuth,
