@@ -16,7 +16,6 @@ const db = drizzle(sql);
 async function seed() {
 
   try {
-    // Create demo user
     const demoPasswordHash = await hashPassword('password123');
     
     const [demoUser] = await db.insert(users).values({
@@ -27,7 +26,6 @@ async function seed() {
       bio: 'Demo user for testing the PPR authentication system',
     }).returning();
 
-    // Create more users
     const [user1] = await db.insert(users).values({
       name: 'John Doe',
       email: 'john@example.com',
